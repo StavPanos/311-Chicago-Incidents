@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Read the file
-chunk  = pd.read_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/csv/311-service-requests-graffiti-removal.csv",
+chunk = pd.read_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/csv/311-service-requests-graffiti-removal.csv",
                    low_memory=False, chunksize=1000000)
 
 data = pd.concat(chunk)
@@ -16,9 +16,9 @@ print(data.columns)
 data = data.filter(['surface', 'located_at'], axis=1)
 
 # Add the right id numbers
-data.insert(0, 'incident_id', range(2460948, 2460948 + len(data)))
+data.insert(0, 'incident_id', range(847791, 847791 + len(data)))
 
 # DATA FORMAT
 data[['surface', 'located_at']] = data[['surface', 'located_at']].fillna('').astype(str)
 
-data.to_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/cleaned_csv/6/311-graffiti-removal.csv", index=False, header=True)
+data.to_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/cleaned_csv/4/311-graffiti-removal.csv", index=False, header=True)
