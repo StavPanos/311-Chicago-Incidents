@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08211fc9-5a52-4ede-a2e7-8afd7157a09a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Python/Pot_Holes_Cleaning.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python/Sanitation_Data_Cleaning.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Python/Tree_Data_Cleaning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python/Graffiti_Cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/Graffiti_Cleaning.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
