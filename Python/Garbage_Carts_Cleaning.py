@@ -22,4 +22,4 @@ data['carts_delivered'] = data['carts_delivered'].fillna(0).astype('int')
 
 data.loc[data['carts_delivered'] < 0, 'carts_delivered'] = 0
 
-data.to_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/cleaned_csv/6/311-garbage-carts.csv", index=False, header=True)
+data.to_csv("C:/Users/stavropoulosp/Desktop/M149/311-Incidents/cleaned_csv/3/311-garbage-carts.csv", index=False, header=True)
