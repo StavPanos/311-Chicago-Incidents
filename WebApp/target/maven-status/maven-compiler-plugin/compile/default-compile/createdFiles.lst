@@ -1,3 +1,5 @@
+com\m149\bean\Incidents$1.class
+com\m149\persistence\IncidentsPersistence.class
+com\m149\persistence\JdbcFetch.class
 META-INF\sisu\javax.inject.Named
 com\m149\bean\Incidents.class
-com\m149\persistence\IncidentsPersistence.class

@@ -2,20 +2,189 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <h:head>
-    <title>#{bean.message}</title>
+    <title>Chicago 311 Incidents</title>
   </h:head>
 
   <h:body>
-    <p:panel id="horizontal" header="Horizontal Toggle" toggleable="true" toggleOrientation="horizontal">
-      <h:panelGrid columns="2" cellpadding="10">
-        <img src="https://images.unsplash.com/photo-1545289415-50dff9405935?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=250&amp;q=80"/>
 
-        <h:outputText value="#{bean.message}"/>
-      </h:panelGrid>
-    </p:panel>
+    <h:panelGroup id="mainFormPanel">
+      <h:form id="mainForm" prependId="false">
+
+        <p:panel id="queryPanel">
+          <h:outputText style="font-weight: bold;font-size:14px;" value="Select Query: "/>
+
+          <p:commandButton title="1" action="#{bean.setQueryNumber(1)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="2" action="#{bean.setQueryNumber(2)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="3" action="#{bean.setQueryNumber(3)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="4" action="#{bean.setQueryNumber(4)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="5" action="#{bean.setQueryNumber(5)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="6" action="#{bean.setQueryNumber(6)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="7" action="#{bean.setQueryNumber(7)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="8" action="#{bean.setQueryNumber(8)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="9" action="#{bean.setQueryNumber(9)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="10" action="#{bean.setQueryNumber(10)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="11" action="#{bean.setQueryNumber(11)}" update="mainForm" style="width: 100px"/>   
+          <p:commandButton title="12" action="#{bean.setQueryNumber(12)}" update="mainForm" style="width: 100px"/>   
+        </p:panel>
+
+        <p:panel id="mainPanel">
+          <div class="ui-g">
+
+            <ui:fragment rendered="#{bean.queryNumber eq 0}">
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Incident Id: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText id="criteria_id" value="#{bean.criteria.INCIDENT_ID}" style="float:left; width:80%;"/>
+              </div>
+
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Service Request Type: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText id="criteria_type" value="#{bean.criteria.SERVICE_REQUEST_TYPE}" style="float:left; width:80%;"/>
+              </div>
+            </ui:fragment>
+
+
+            <ui:fragment rendered="#{bean.queryNumber eq 1}">
+              <div class='ui-g-12 ui-md-12 ui-lg-12'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Query 1: Find the total requests per type that were created within a specified time range and sort
+                              them in a descending order."/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="From: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText id="criteria_start_dt" value="#{bean.criteria.START_DATE}" style="float:left; width:80%;"/>
+              </div>
+
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="To :"/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText id="criteria_end_dt" value="#{bean.criteria.END_DATE}" style="float:left; width:80%;"/>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{bean.queryNumber eq 3}">
+              <div class='ui-g-12 ui-md-12 ui-lg-12'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Query 3: Find the most common service request per zipcode for a specific day."/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Date: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText value="#{bean.criteria.DATE}" style="float:left; width:80%;"/>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{bean.queryNumber eq 9}">
+              <div class='ui-g-12 ui-md-12 ui-lg-12'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Query 9: Find the rodent baiting requests where the number of premises baited is less than a specified
+                              number."/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Premises Baited: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText value="#{bean.criteria.NUMBER}" style="float:left; width:80%;"/>
+              </div>
+            </ui:fragment>
+
+            <ui:fragment rendered="#{bean.queryNumber eq 12}">
+              <div class='ui-g-12 ui-md-12 ui-lg-12'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Query 12: Find the police districts that have handled “pot holes” requests with more than one number
+                              of potholes on the same day that they also handled “rodent baiting” requests with more than
+                              one number of premises baited, for a specific day."/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-1'>
+                <h:outputText style="font-weight: bold;font-size:14px;" value="Date: "/>
+              </div>
+              <div class='ui-g-12 ui-md-6 ui-lg-2'>
+                <p:inputText value="#{bean.criteria.DATE}" style="float:left; width:80%;"/>
+              </div>
+            </ui:fragment>
+
+            <div class='ui-g-0 ui-md-0 ui-lg-5'></div>
+            <div class='ui-g-12 ui-md-12 ui-lg-12'>
+              <p:commandButton title="View"
+                               value="View"
+                               action="#{bean.searchView()}"
+                               update=":linesTable"
+                               icon="ui-icon ui-icon-search"/>
+              <p:commandButton title="Clear"
+                               value="Clear"
+                               icon="ui-icon ui-icon-trash"
+                               action="#{bean.searchClear()}"
+                               update="mainPanel, :linesTable"/>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+              <p:dataTable id="linesTable" widgetVar="linesTable"
+                           reflow="true"
+                           var="row"
+                           value="#{bean.lazyDataModelPecs}"
+                           emptyMessage="Empty Table"
+                           lazy="true"
+                           paginator="true" rows="20"
+                           paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                           currentPageReportTemplate="page {currentPage} of {totalPages}">
+
+                <p:column headerText="Id" width="100" rendered="#{bean.queryNumber == 0}">
+                  <h:outputText value="#{row.INCIDENT_ID}" style="center"/>
+                </p:column>
+                <p:column headerText="Type" width="100" rendered="#{bean.queryNumber == 0}">
+                  <h:outputText value="#{row.SERVICE_REQUEST_TYPE}" style="center"/>
+                </p:column>
+
+                <p:column headerText="Description" width="100" rendered="#{bean.queryNumber == 1}">
+                  <h:outputText value="#{row.DESCRIPTION}" style="center"/>
+                </p:column>
+                <p:column headerText="Requests" width="100" rendered="#{bean.queryNumber == 1}">
+                  <h:outputText value="#{row.REQUESTS}" style="center"/>
+                </p:column>
+
+                <p:column headerText="Description" width="100" rendered="#{bean.queryNumber == 3}">
+                  <h:outputText value="#{row.DESCRIPTION}" style="center"/>
+                </p:column>
+                <p:column headerText="Zip Code" width="100" rendered="#{bean.queryNumber == 3}">
+                  <h:outputText value="#{row.ZIP_CODE}" style="center"/>
+                </p:column>
+                <p:column headerText="Requests" width="100" rendered="#{bean.queryNumber == 3}">
+                  <h:outputText value="#{row.REQUESTS}" style="center"/>
+                </p:column>
+
+                <p:column headerText="Service Request Number" width="100" rendered="#{bean.queryNumber == 9}">
+                  <h:outputText value="#{row.SERVICE_REQUEST_NUMBER}" style="center"/>
+                </p:column>
+                <p:column headerText="Creation Date" width="100" rendered="#{bean.queryNumber == 9}">
+                  <h:outputText value="#{row.CREATION_DATE}" style="center">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                  </h:outputText>
+                </p:column>
+                <p:column headerText="Zip Code" width="100" rendered="#{bean.queryNumber == 9}">
+                  <h:outputText value="#{row.ZIP_CODE}" style="center"/>
+                </p:column>
+
+                <p:column headerText="Police District" width="100" rendered="#{bean.queryNumber == 12}">
+                  <h:outputText value="#{row.POLICE_DISTRICT}" style="text-align: center"/>
+                </p:column>
+
+              </p:dataTable>
+            </div>
+          </div>
+        </p:panel>
+
+      </h:form>
+    </h:panelGroup>
 
   </h:body>
 </html>

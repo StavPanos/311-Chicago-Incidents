@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:head>
+    <title>Chicago 311 Incidents</title>
+  </h:head>
+
+  <h:body>
+
+    <h:panelGroup id="mainFormPanel">
+      <h:form id="mainForm" prependId="false">
+        
+        <p:panel>
+          
+          <div class="ui-g">
+            <div class='ui-g-12 ui-md-6 ui-lg-1'>
+              <h:outputText style="font-weight: bold;font-size:14px;" value="Id"/>
+            </div>
+            <div class='ui-g-12 ui-md-6 ui-lg-2'>
+              <p:inputText id="criteria_id" value="#{bean.criteria.incident_id}" style="float:left; width:80%;"/>
+            </div>
+
+
+            <div class='ui-g-0 ui-md-0 ui-lg-5'></div>
+            <div class='ui-g-12 ui-md-12 ui-lg-12'>
+              <p:commandButton title="View"
+                               value="View"
+                               action="#{bean.searchView()}"
+                               update=":linesTable"
+                               icon="ui-icon ui-icon-search"/>
+              <p:commandButton title="Clear"
+                               value="Clear"
+                               icon="ui-icon ui-icon-trash"
+                               action="#{bean.searchClear()}"
+                               update="criteria_id, :linesTable"/>
+            </div>
+          </div>
+
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+              <p:dataTable id="linesTable" widgetVar="linesTable"
+                           reflow="true"
+                           var="row"
+                           value="#{bean.lazyDataModelPecs}"
+                           emptyMessage="Empty Table"
+                           lazy="true"
+                           paginator="true" rows="10"
+                           paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                           currentPageReportTemplate="page {currentPage} of {totalPages}">
+
+                <p:column headerText="Id" width="100">
+                  <h:outputText value="#{row.incident_id}" style="center"/>
+                </p:column>
+                <p:column headerText="Type" width="100">
+                  <h:outputText value="#{row.service_request_type}" style="center"/>
+                </p:column>
+
+              </p:dataTable>
+            </div>
+          </div>
+        </p:panel>
+
+      </h:form>
+    </h:panelGroup>
+
+  </h:body>
+</html>
