@@ -48,7 +48,7 @@ public class Incidents implements Serializable {
   }
 
   public LazyDataModel<Map> getLazyDataModelPecs() {
-    if (lazyDataModelIncidents == null) {
+    if (lazyDataModelIncidents == null & !criteria.isEmpty()) {
       lazyDataModelIncidents = new LazyDataModel<Map>() {
         public void setRowIndex(int rowIndex) {
           if (rowIndex == -1 || getPageSize() == 0) {
@@ -102,8 +102,9 @@ public class Incidents implements Serializable {
   }
 
   public void setQueryNumber(int queryNumber) {
-    criteria = new HashMap();
     this.queryNumber = queryNumber;
+    criteria = new HashMap();
+    lazyDataModelIncidents = null;
   }
 
 }
