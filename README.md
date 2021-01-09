@@ -13,4 +13,4 @@ Pertinent data of the above data set have to be stored in 311CI and can be used 
 becomes operational.
 
 Database Schema:
-![alt text](https://github.com/StavPanos/311-Chicago-Incidents/resources/db_schema.png?raw=true)
+![alt text](https://github.com/StavPanos/311-Chicago-Incidents/blob/resources/db_schema.png?raw=true)
