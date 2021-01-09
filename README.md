@@ -12,3 +12,5 @@ https://www.kaggle.com/chicago/chicago-311-service-requests.
 Pertinent data of the above data set have to be stored in 311CI and can be used when the system
 becomes operational.
 
+Database Schema:
+![alt text](https://github.com/StavPanos/311-Chicago-Incidents/blob/resources/db_schema.png?raw=true)
